@@ -109,3 +109,65 @@ FalconRVx8/
 ├── fpga_top.bit
 ├── Makefile
 └── README.md
+
+## How to Run This Project
+
+This project can be run in two ways:
+
+1. Program the FPGA directly using the provided/generated bitstream.
+2. Rebuild the design in Vivado and generate a new bitstream.
+
+---
+
+### Required Setup
+
+- Windows PC
+- Xilinx Vivado with Artix-7 support
+- Digilent Nexys A7-100T FPGA board
+- USB cable
+- PuTTY or any serial terminal
+- Python 3 in PATH, only needed for rebuilding C memory files
+- `riscv-none-elf-gcc` toolchain in PATH, only needed for rebuilding C programs
+
+---
+
+### Important Project Details
+
+- Top module: `fpga_top`
+- FPGA part: `xc7a100tcsg324-1`
+- Target board: Digilent Nexys A7-100T
+- UART baud rate: `115200`
+- UART format: `8N1`, no flow control
+- Reset signal: `CPU_RESETN`
+- Active memory files:
+  - `modules/memory/imem.hex`
+  - `modules/memory/dmem.hex`
+
+---
+
+### Fastest Way to Run on FPGA
+
+If a bitstream is already available:
+
+1. Open Vivado.
+2. Open `Hardware Manager`.
+3. Connect the Nexys A7-100T board using USB.
+4. Click `Open Target` > `Auto Connect`.
+5. Click `Program Device`.
+6. Select the generated bitstream file.
+7. Open PuTTY or any serial terminal.
+8. Select the board COM port.
+9. Set baud rate to `115200`.
+10. Use `8N1` with no flow control.
+11. Press the FPGA reset button.
+
+Expected UART output:
+
+```text
+CALC READY
+CALC>
+
+##Summary
+FalconRVx8 is a custom FPGA-based RISC-V processor system with RV32I and RV32M support, UART communication, memory-mapped I/O, and bare-metal C execution.
+
+The project demonstrates how a processor can be designed in Verilog, loaded with compiled C programs through hex memory files, and used interactively through a serial terminal. It connects processor architecture, FPGA implementation, and embedded software into one complete working system.
