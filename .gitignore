@@ -1,0 +1,41 @@
+# Vivado generated project/build outputs
+*.jou
+*.log
+*.str
+*.dmp
+*.rpt
+*.wdb
+*.wcfg
+*.pb
+*.xpr
+*.os
+*.runs/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.sim/
+*.srcs/
+.Xil/
+
+# Generated simulation outputs
+*.vcd
+*.fst
+*.out
+*.vvp
+
+# Temporary/editor files
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Toolchain-generated C/ELF intermediates
+mem generator/hex files/*.elf
+mem generator/hex files/*.bin
+
+# Keep checked-in memory images and the known-good demo bitstream.
+!modules/memory/*.hex
+!mem generator/hex files/*.hex
+!fpga_top.bit
