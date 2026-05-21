@@ -1,9 +1,8 @@
-# FalconRVx8
 # FalconRVx8: Custom RISC-V Processor on FPGA
 
 **FalconRVx8** is a custom RISC-V processor implemented on an FPGA. It uses a pipelined processor architecture supporting the RV32I instruction set along with the RV32M multiply/divide extension. The project also includes a small FPGA-based SoC environment with instruction memory, data memory, a bus interconnect, UART communication, and LED-based hardware debugging.
 
-The processor runs a bare-metal C program from FPGA memory and communicates with a PC through a UART serial interface. Using a PuTTY terminal, the system behaves like an interactive calculator: the user enters expressions such as `12*3`, the processor executes the program internally, and the result is printed back through UART.
+The processor runs a bare-metal C program from FPGA memory and communicates with a PC through a UART serial interface. Using a PuTTY terminal, the system behaves like an interactive calculator: the user enters expressions, the processor executes the program internally, and the result is printed back through UART.
 
 ---
 
@@ -43,6 +42,8 @@ The current demo program is a UART-based calculator. After programming the FPGA,
 
 - **Pipelined Architecture**
   - Uses a multi-stage processor structure
+  - 5-Stage Pipelined Datapath: IF, ID, EX, MEM, WB
+  - Base ISA: Fully implements the RV32I instruction set
   - Includes stall, flush, and bypass logic for correct instruction execution
 
 - **UART-Based Interactive Execution**
@@ -107,8 +108,9 @@ FalconRVx8/
 │   └── hex files/
 │
 ├── fpga_top.bit
-├── Makefile
 └── README.md
+
+```
 
 ## How to Run This Project
 
@@ -166,8 +168,11 @@ Expected UART output:
 ```text
 CALC READY
 CALC>
+```
 
-##Summary
+## Summary
 FalconRVx8 is a custom FPGA-based RISC-V processor system with RV32I and RV32M support, UART communication, memory-mapped I/O, and bare-metal C execution.
 
 The project demonstrates how a processor can be designed in Verilog, loaded with compiled C programs through hex memory files, and used interactively through a serial terminal. It connects processor architecture, FPGA implementation, and embedded software into one complete working system.
+
+---
